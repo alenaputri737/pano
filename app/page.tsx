@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 export default function Home() {
   const [openBox, setOpenBox] = useState<string | null>(null);
@@ -58,7 +59,7 @@ export default function Home() {
         backgroundSize: "600% 600%",
         animation: "gradientBG 15s ease infinite",
         zIndex: -1
-      }}></div>
+      }} />
 
       <style>{`
         @keyframes gradientBG {
@@ -79,7 +80,18 @@ export default function Home() {
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "50px", maxWidth: "900px", margin: "0 auto", gap: "30px" }}>
         {/* FOTO */}
         <motion.div initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} whileHover={{ scale: 1.05, rotate: 1.5 }} style={{ display: "flex", justifyContent: "center" }}>
-          <img src="/aleno.jpg" alt="Foto Alena" style={{ width: "280px", height: "360px", objectFit: "cover", borderRadius: "30% / 20%", boxShadow: "0 0 20px rgba(255,192,203,0.7), 0 0 40px rgba(0,0,0,0.25)", border: "8px solid white" }} />
+          <Image
+            src="/aleno.jpg"
+            alt="Foto Alena"
+            width={280}
+            height={360}
+            style={{
+              objectFit: "cover",
+              borderRadius: "30% / 20%",
+              boxShadow: "0 0 20px rgba(255,192,203,0.7), 0 0 40px rgba(0,0,0,0.25)",
+              border: "8px solid white",
+            }}
+          />
         </motion.div>
 
         {/* JUDUL + DESKRIPSI */}
@@ -97,11 +109,42 @@ export default function Home() {
         {/* GRID KOTAK */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "20px", width: "100%" }}>
           {boxes.map(box => (
-            <motion.div key={box.key} className="glowBox" style={{ padding: "20px", background: "black", borderRadius: "15px", fontSize: "16px", fontWeight: "bold", textAlign: "center", cursor: "pointer", position: "relative", transition: "all 0.3s ease", color: "white" }} whileHover={{ scale: 1.05, background: box.gradient }}>
+            <motion.div
+              key={box.key}
+              className="glowBox"
+              style={{
+                padding: "20px",
+                background: "black",
+                borderRadius: "15px",
+                fontSize: "16px",
+                fontWeight: "bold",
+                textAlign: "center",
+                cursor: "pointer",
+                position: "relative",
+                transition: "all 0.3s ease",
+                color: "white"
+              }}
+              whileHover={{ scale: 1.05, background: box.gradient }}
+              onClick={() => toggleBox(box.key)}
+            >
               {box.title}
               <AnimatePresence>
                 {openBox === box.key && (
-                  <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.4 }} style={{ marginTop: "10px", background: "#222", padding: "15px", borderRadius: "10px", fontSize: "14px", textAlign: "left", boxShadow: "inset 0 2px 6px rgba(0,0,0,0.08)" }}>
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.4 }}
+                    style={{
+                      marginTop: "10px",
+                      background: "#222",
+                      padding: "15px",
+                      borderRadius: "10px",
+                      fontSize: "14px",
+                      textAlign: "left",
+                      boxShadow: "inset 0 2px 6px rgba(0,0,0,0.08)"
+                    }}
+                  >
                     {box.content}
                   </motion.div>
                 )}
@@ -111,7 +154,23 @@ export default function Home() {
         </div>
 
         {/* TOMBOL */}
-        <motion.a href="/skills" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} animate={{ scale: [1, 1.05, 1] }} transition={{ repeat: Infinity, duration: 2 }} style={{ padding: "12px 25px", background: "linear-gradient(90deg, #ff758c, #ff7eb3)", color: "white", fontWeight: "bold", borderRadius: "30px", textDecoration: "none", boxShadow: "0 4px 8px rgba(0,0,0,0.2)", transition: "all 0.3s ease" }}>
+        <motion.a
+          href="/skills"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          animate={{ scale: [1, 1.05, 1] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+          style={{
+            padding: "12px 25px",
+            background: "linear-gradient(90deg, #ff758c, #ff7eb3)",
+            color: "white",
+            fontWeight: "bold",
+            borderRadius: "30px",
+            textDecoration: "none",
+            boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
+            transition: "all 0.3s ease"
+          }}
+        >
           🚀 Explore My Skills
         </motion.a>
       </div>

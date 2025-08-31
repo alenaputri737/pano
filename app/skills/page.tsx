@@ -54,15 +54,13 @@ export default function Skills() {
         animation: "gradientMove 15s ease infinite",
       }}
     >
-      <style>
-        {`
-          @keyframes gradientMove {
-            0% {background-position:0% 50%;}
-            50% {background-position:100% 50%;}
-            100% {background-position:0% 50%;}
-          }
-        `}
-      </style>
+      <style>{`
+        @keyframes gradientMove {
+          0% {background-position:0% 50%;}
+          50% {background-position:100% 50%;}
+          100% {background-position:0% 50%;}
+        }
+      `}</style>
 
       <h1
         style={{
@@ -89,10 +87,14 @@ export default function Skills() {
         {data.map((item) => (
           <motion.div
             key={item.title}
-            whileHover={{ scale: 1.03, boxShadow: "0 0 25px #fff, 0 0 50px #bb00ff" }}
+            whileHover={{
+              scale: 1.03,
+              boxShadow: "0 0 25px #fff, 0 0 50px #bb00ff",
+            }}
             onClick={() => toggle(item.title)}
             style={{
-              background: "linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.1))",
+              background:
+                "linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.1))",
               borderRadius: "20px",
               padding: "20px",
               cursor: "pointer",
