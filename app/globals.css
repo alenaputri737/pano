@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  transition: 0.3s;
+}
+
+/* Dark Mode */
+body.dark {
+  background: #111;
+  color: white;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background: #eee;
+}
+.navbar ul { list-style: none; display: flex; gap: 20px; }
+.navbar a { text-decoration: none; }
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+/* Halaman */
+.home {
+  background: linear-gradient(to bottom, pink, white, black);
+  padding: 20px;
+}
+.box { border: 1px solid #ccc; padding: 20px; margin: 10px; }
+
+.skills {
+  background: linear-gradient(to bottom, skyblue, white);
+  padding: 20px;
+}
+.skill-box { border: 1px solid #ccc; margin: 10px; padding: 20px; }
+
+.robotic {
+  background: linear-gradient(to bottom, violet, white);
+  padding: 20px;
+}
+.robotic-gallery { display: flex; gap: 10px; }
+.robotic-gallery img { width: 150px; height: 150px; object-fit: cover; }
+
+.contact {
+  background: linear-gradient(to bottom, black, pink);
+  padding: 20px;
+  text-align: center;
+}
+.contact-box {
+  border: 2px dashed pink;
+  padding: 20px;
+  margin: auto;
+  width: fit-content;
+}
